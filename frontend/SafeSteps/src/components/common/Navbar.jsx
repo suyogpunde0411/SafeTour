@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import AboutUs from './AboutUs';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -26,7 +27,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-white hover:text-cyan-200 transition">Home</Link>
-            <Link to="/about" className="text-white hover:text-cyan-200 transition">About</Link>
+            <Link to="/about" className="text-white hover:text-cyan-200 transition">About Us</Link>
             <Link to="/services" className="text-white hover:text-cyan-200 transition">Services</Link>
             <Link to="/contact" className="text-white hover:text-cyan-200 transition">Contact</Link>
           </div>

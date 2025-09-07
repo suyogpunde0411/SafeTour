@@ -142,28 +142,28 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Secure Your Tourism?</h2>
-          <p className="text-xl mb-8 text-cyan-100">
-            Join thousands of tourism authorities who trust SafeTour for comprehensive visitor safety management.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <Link 
-              to="/register"
-              className="bg-white text-teal-600 px-8 py-3 rounded-full font-semibold hover:bg-cyan-50 transition transform hover:scale-105"
-            >
-              Start Free Trial
-            </Link>
-            <Link 
-              to="/contact"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-teal-600 transition"
-            >
-              Contact Sales
-            </Link>
-          </div>
-        </div>
-      </section>
+      <section className="py-20 bg-gradient-to-br from-cyan-50 to-teal-100">
+  <div className="max-w-4xl mx-auto text-center px-4">
+    <h2 className="text-4xl font-bold text-gray-800 mb-6">Ready to Secure Your Tourism?</h2>
+    <p className="text-xl text-gray-600 mb-8">
+      Join thousands of tourism authorities who trust SafeTour for comprehensive visitor safety management.
+    </p>
+    <div className="flex justify-center space-x-4">
+      <Link 
+        to="/register"
+        className="bg-teal-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-teal-700 transition transform hover:scale-105"
+      >
+        Get Started
+      </Link>
+      <Link 
+        to="/contact"
+        className="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-full font-semibold hover:bg-teal-600 hover:text-white transition"
+      >
+        Contact Us
+      </Link>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import AboutUs from './AboutUs';
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
@@ -44,8 +44,7 @@ const Footer = () => {
   <li className="mb-2"><Link to="/about" className="text-cyan-100 hover:text-white transition">About Us</Link></li>
   <li className="mb-2"><Link to="/services" className="text-cyan-100 hover:text-white transition">Services</Link></li>
   <li className="mb-2"><Link to="/contact" className="text-cyan-100 hover:text-white transition">Contact</Link></li>
-  <li className="mb-2"><Link to="/privacy" className="text-cyan-100 hover:text-white transition">Privacy Policy</Link></li>
-  <li><Link to="/terms" className="text-cyan-100 hover:text-white transition">Terms of Service</Link></li>
+  
 </ul>
           </div>
 
@@ -62,7 +61,7 @@ const Footer = () => {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                 </svg>
-                <span className="text-cyan-100">123 Safety Street, TechCity, TC 12345</span>
+                <span className="text-cyan-100">PICT, Dhankavadi, Pune </span>
               </div>
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -83,12 +82,9 @@ const Footer = () => {
 
         <div className="border-t border-cyan-500 mt-8 pt-8 text-center">
           <p className="text-cyan-100">
-            © 2025 SafeTour. All rights reserved. • Proudly securing tourists worldwide
+            © 2025 SafeTour. All rights reserved. • Proudly securing tourists 
           </p>
-          <div className="flex justify-center space-x-6 mt-4">
-            <Link to="/privacy" className="text-cyan-100 hover:text-white text-sm transition">Privacy Policy</Link>
-            <Link to="/terms" className="text-cyan-100 hover:text-white text-sm transition">Terms of Service</Link>
-          </div>
+          
         </div>
       </div>
     </footer>

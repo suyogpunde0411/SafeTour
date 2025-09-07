@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -44,19 +49,28 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
+    
     setLoading(true);
     try {
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Create user object
       const user = {
-        id: '123',
+        id: Math.random().toString(36).substr(2, 9),
         email: formData.email,
         name: formData.userType === 'admin' ? 'Admin User' : 'Tourist User',
         type: formData.userType
       };
+      
+      // Login user through context
+      login(user);
+      
       setSuccess(true);
+      
+      // Navigate after success message
       setTimeout(() => {
-        console.log('Navigating to:', formData.userType === 'admin' ? '/admin' : '/tourist');
-        // navigate(formData.userType === 'admin' ? '/admin' : '/tourist');
+        navigate(formData.userType === 'admin' ? '/admin' : '/tourist');
       }, 1500);
     } catch (error) {
       console.error('Login failed:', error);
@@ -67,7 +81,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-400 via-teal-500 to-cyan-600 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-100 flex items-center justify-center p-4">
       <div className="w-full max-w-sm relative z-10">
         <div className="bg-white rounded-2xl shadow-2xl border border-cyan-100 overflow-hidden">
           {/* Header Section */}
@@ -224,9 +238,9 @@ const Login = () => {
               </a>
               <div className="text-center">
                 <span className="text-gray-600 text-sm">Don't have an account? </span>
-                <a href="#" className="text-teal-600 hover:text-cyan-700 font-semibold hover:underline">
+                <Link to="/register" className="text-teal-600 hover:text-cyan-700 font-semibold hover:underline">
                   Create Account
-                </a>
+                </Link>
               </div>
             </div>
           </form>

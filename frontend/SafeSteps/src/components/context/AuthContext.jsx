@@ -1,4 +1,3 @@
-// ============== context/AuthContext.jsx ==============
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -16,14 +15,14 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is logged in (from localStorage)
-    const savedUser = localStorage.getItem('safetour_user');
+    // Check for saved user data in sessionStorage on component mount
+    const savedUser = sessionStorage.getItem('safetour_user');
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
       } catch (error) {
         console.error('Error parsing saved user data:', error);
-        localStorage.removeItem('safetour_user');
+        sessionStorage.removeItem('safetour_user');
       }
     }
     setLoading(false);
@@ -31,18 +30,20 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem('safetour_user', JSON.stringify(userData));
+    // Save user data to sessionStorage
+    sessionStorage.setItem('safetour_user', JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('safetour_user');
+    // Remove user data from sessionStorage
+    sessionStorage.removeItem('safetour_user');
   };
 
-  const updateUser = (updatedData) => {
-    const updatedUser = { ...user, ...updatedData };
-    setUser(updatedUser);
-    localStorage.setItem('safetour_user', JSON.stringify(updatedUser));
+  const updateUser = (updatedUserData) => {
+    const newUserData = { ...user, ...updatedUserData };
+    setUser(newUserData);
+    sessionStorage.setItem('safetour_user', JSON.stringify(newUserData));
   };
 
   const value = {
@@ -56,9 +57,20 @@ export const AuthProvider = ({ children }) => {
     isTourist: user?.type === 'tourist'
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-100 flex items-center justify-center">
+        <div className="bg-white rounded-3xl shadow-xl p-8 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading SafeTour...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };

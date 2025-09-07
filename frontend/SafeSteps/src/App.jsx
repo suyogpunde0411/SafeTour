@@ -7,22 +7,25 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-// import TouristPortal from './pages/TouristPortal';
-// import AdminPortal from './pages/AdminPortal';
+import TouristPortal from './pages/TouristPortal';
+import AdminPortal from './pages/AdminPortal';
 import './App.css';
-function App() {
+import AboutUs from './components/common/AboutUs';
+import Services from './components/common/Services';
+import  Contact  from './components/common/Contact';
 
+function App() {
   return (
-     <AuthProvider>
+    <AuthProvider>
       <Router>
         <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-teal-100">
           <Navbar />
-          <Home/>
-          <Login/>
-          <Register/>
-          {/* <main className="flex-1">
+          <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path='/about'element={<AboutUs/>}/>
+              <Route path='/services' element={<Services/>}/>
+              <Route path='/contact' element={<Contact/>}/>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route 
@@ -42,12 +45,12 @@ function App() {
                 } 
               />
             </Routes>
-          </main> */}
-          <Footer /> 
+          </main>
+          <Footer />
         </div>
       </Router>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;
